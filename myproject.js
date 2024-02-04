@@ -69,6 +69,7 @@ $fx.params([
 
 
 //read in query strings
+var print = new URLSearchParams(window.location.search).get('p'); //format for printing
 var qh = new URLSearchParams(window.location.search).get('h'); //high
 var qw = new URLSearchParams(window.location.search).get('w'); //wide
 var qs = new URLSearchParams(window.location.search).get('scale'); //scale
@@ -186,7 +187,7 @@ var px=0;var py=0;var pz=0;var prange=.1;
 for (z = 0; z < stacks; z++) {
     pz=z*prange;
     drawFrame(z); // Draw the initial frame
-    //if(z==0){solid(z)}
+    //if(z==10){solid(z)}
 
          //-----Draw each layer
         if(z<stacks-1 && z!=0 ){
@@ -365,7 +366,8 @@ function frameIt(z){
 
         var frame = outsideframe.subtract(insideframe);
         outsideframe.remove();insideframe.remove();
-        sheet[z] = sheet[z].unite(frame);
+        if (print!=1){sheet[z] = sheet[z].unite(frame);}
+        if (z<stacks-1 && print==1){sheet[z] = sheet[z].subtract(frame);}
         frame.remove();
         project.activeLayer.children[project.activeLayer.children.length-2].remove();
          
@@ -516,6 +518,8 @@ document.addEventListener('keypress', (event) => {
             var blob = new Blob([content], {type: "text/plain;charset=utf-8"});
             saveAs(blob, filename);
             }
+
+
 
 
        //Explode the layers     
