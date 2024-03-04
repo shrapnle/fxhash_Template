@@ -1,6 +1,7 @@
 //colors.js
 var tints = [
 {"Hex":"#FEF6E3", "Name":"Antique White"},
+{"Hex":"#A9D0DF", "Name":"Aqua Blue"},
 {"Hex":"#F5E3CF", "Name":"Beige"},
 {"Hex":"#01AE52", "Name":"Bright Green"},
 {"Hex":"#8490A6", "Name":"Brittany Blue"},
